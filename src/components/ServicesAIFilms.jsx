@@ -88,7 +88,7 @@ export default function ServicesAIFilms({ theme, onOpenContact }) {
         </div>
 
         {/* AI Tech Stack Marquee */}
-        <div className="mt-16 text-center space-y-4 reveal-init">
+        {/* <div className="mt-16 text-center space-y-4 reveal-init">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
             Powered By Studio-Grade Generative AI Tech Stack
           </span>
@@ -101,7 +101,7 @@ export default function ServicesAIFilms({ theme, onOpenContact }) {
               </span>
             ))}
           </div>
-        </div>
+        </div> */}
 
       </div>
     </section>
