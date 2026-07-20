@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ServicesShortDrama from './components/ServicesShortDrama';
 import ServicesAIFilms from './components/ServicesAIFilms';
-import DramaAppSimulator from './components/DramaAppSimulator';
 import AIFilmGallery from './components/AIFilmGallery';
 import AboutUs from './components/AboutUs';
 import PipelineWorkflow from './components/PipelineWorkflow';
@@ -70,8 +69,6 @@ export default function App() {
           theme={theme}
           onOpenContact={() => setIsContactOpen(true)}
         />
-
-        <DramaAppSimulator theme={theme} />
 
         <AIFilmGallery
           theme={theme}

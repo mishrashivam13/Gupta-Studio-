@@ -14,7 +14,7 @@ export default function Navbar({ theme, onToggleTheme, onOpenContact }) {
   }, []);
 
   const navLinks = [
-    { name: 'Short Drama Apps & Web', href: '#short-drama' },
+    { name: 'Short Drama Content', href: '#short-drama' },
     { name: 'AI Film Production', href: '#ai-films' },
     { name: 'AI VFX & Dubbing', href: '#vfx-gallery' },
     { name: 'About Us', href: '#about-us' }
