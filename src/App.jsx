@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedServicesForEstimate, setSelectedServicesForEstimate] = useState([]);
   const [estimatedPrice, setEstimatedPrice] = useState(0);
