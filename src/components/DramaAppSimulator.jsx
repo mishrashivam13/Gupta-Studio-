@@ -143,7 +143,7 @@ export default function DramaAppSimulator({ theme }) {
           <div className="lg:col-span-6 flex justify-center reveal-slide-left">
             
             {/* Phone Frame */}
-            <div className="relative w-[340px] sm:w-[380px] h-[680px] bg-slate-950 rounded-[48px] border-[10px] border-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-between select-none">
+            <div className="relative w-[340px] max-w-[calc(100vw-2rem)] sm:w-[380px] h-[680px] bg-slate-950 rounded-[48px] border-[10px] border-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-between select-none">
               
               {/* Speaker Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-5 bg-slate-900 rounded-b-2xl z-30 flex items-center justify-center">
