@@ -1,10 +1,10 @@
 import React from 'react';
-import { Award, ShieldCheck, Zap, Users, Globe2, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Award, Globe2, CheckCircle2 } from 'lucide-react';
 
 export default function AboutUs({ onOpenContact }) {
   const stats = [
     { label: 'Short Drama Series Supplied', val: '500+' },
-    { label: 'AI Video Shots Rendered', val: '10,000+' },
+    { label: 'AI Video Shots Rendered', val: '10,005+' },
     { label: 'Global Dubbing Languages', val: '25+' },
     { label: 'Video Stream Uptime Standard', val: '99.9%' },
   ];
@@ -29,22 +29,22 @@ export default function AboutUs({ onOpenContact }) {
   ];
 
   return (
-    <section id="about-us" className="py-24 relative border-t border-[#181a28] bg-[#050508]">
+    <section id="about-us" className="py-24 relative border-t border-slate-100 bg-white">
       
       {/* Background glow */}
-      <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-fade-up">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121422] border border-[#22263d] text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wider">
             <Award className="w-4 h-4" /> About Gupta Studio
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
-            Pioneering <span className="font-cursive text-amber-400 text-4xl sm:text-5xl lg:text-6xl font-normal">Next-Gen Media Tech</span> & AI Film
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+            Pioneering <span className="text-blue-600 font-extrabold">Next-Gen Media Tech</span> & AI Film
           </h2>
-          <p className="text-base sm:text-lg text-slate-300 font-normal">
+          <p className="text-base sm:text-lg text-slate-655 font-normal">
             Gupta Studio is a global technology and media production studio supplying short drama series, film scripts, and AI video clips worldwide.
           </p>
         </div>
@@ -54,17 +54,17 @@ export default function AboutUs({ onOpenContact }) {
           
           {/* Left Column: Studio Narrative */}
           <div className="lg:col-span-6 space-y-6 reveal-slide-left">
-            <div className="studio-card p-8 shadow-2xl">
-              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
-                <Globe2 className="w-4 h-4 text-cyan-400" /> Global Footprint • India, Hong Kong, USA
+            <div className="minimal-card p-8 shadow-sm bg-white">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest flex items-center gap-1.5 mb-2">
+                <Globe2 className="w-4 h-4 text-blue-600" /> Global Footprint • India, Hong Kong, USA
               </span>
-              <h3 className="text-2xl font-extrabold mb-4 text-white">
+              <h3 className="text-2xl font-extrabold mb-4 text-slate-900">
                 Empowering Global Short Drama & AI Content Creation
               </h3>
-              <p className="text-sm leading-relaxed mb-4 text-slate-300">
+              <p className="text-sm leading-relaxed mb-4 text-slate-655 font-medium text-slate-600">
                 With the explosive global demand for vertical short drama series, Gupta Studio provides the complete production pipeline and AI generative video workflows required to create high-retention video content.
               </p>
-              <p className="text-sm leading-relaxed text-slate-300">
+              <p className="text-sm leading-relaxed text-slate-655 font-medium text-slate-600">
                 Our hybrid studio combines experienced screenwriters and video directors with cutting-edge AI generative video tools, enabling 10x faster turnaround at a fraction of traditional Hollywood budgets.
               </p>
             </div>
@@ -72,9 +72,9 @@ export default function AboutUs({ onOpenContact }) {
             {/* Quick Metrics */}
             <div className="grid grid-cols-2 gap-4">
               {stats.map((s, i) => (
-                <div key={i} className="studio-card p-5">
-                  <div className="text-2xl sm:text-3xl font-black text-amber-400 font-mono">{s.val}</div>
-                  <div className="text-xs font-bold mt-1 text-slate-300">{s.label}</div>
+                <div key={i} className="minimal-card p-5 bg-white">
+                  <div className="text-2xl sm:text-3xl font-black text-blue-600 font-mono">{s.val}</div>
+                  <div className="text-xs font-bold mt-1 text-slate-500">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -83,15 +83,15 @@ export default function AboutUs({ onOpenContact }) {
           {/* Right Column: Core Pillars */}
           <div className="lg:col-span-6 space-y-4 reveal-slide-right">
             {pillars.map((p, idx) => (
-              <div key={idx} className="studio-card p-6 flex items-start gap-4 hover:border-cyan-500/50">
-                <div className="p-2.5 rounded-xl bg-[#141624] border border-[#22263d] text-amber-400 shrink-0">
+              <div key={idx} className="minimal-card p-6 flex items-start gap-4 hover:border-blue-500/50 bg-white">
+                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold mb-1 text-white">
+                  <h4 className="text-lg font-bold mb-1 text-slate-900">
                     {p.title}
                   </h4>
-                  <p className="text-xs leading-relaxed text-slate-300">
+                  <p className="text-xs leading-relaxed text-slate-600">
                     {p.desc}
                   </p>
                 </div>

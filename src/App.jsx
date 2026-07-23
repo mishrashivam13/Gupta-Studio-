@@ -11,68 +11,58 @@ import Footer from './components/Footer';
 import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
-  const [theme, setTheme] = useState('dark');
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   // Initialize Scroll Reveal Animations
   useScrollReveal();
 
   useEffect(() => {
-    document.documentElement.classList.remove('light');
+    // Keep it permanently locked to light mode classes
+    document.documentElement.classList.add('light');
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'dark' : 'dark'));
-  };
-
   return (
-    <div className="min-h-screen font-sans bg-[#050508] text-slate-100 selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen font-sans bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
       
-      {/* Studio.Design Header Bar */}
+      {/* Navigation Menu */}
       <Navbar
-        theme="dark"
-        onToggleTheme={toggleTheme}
+        theme="light"
         onOpenContact={() => setIsContactOpen(true)}
       />
 
-      {/* Main Page Sections */}
-      <main className="bg-[#050508]">
+      {/* Main Page Content */}
+      <main className="bg-white">
         <Hero
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <ServicesShortDrama
-          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <ServicesAIFilms
-          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <AIFilmGallery
-          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <AboutUs
-          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
-        <PipelineWorkflow theme="dark" />
+        <PipelineWorkflow />
       </main>
 
       {/* Footer */}
       <Footer
-        theme="dark"
         onOpenContact={() => setIsContactOpen(true)}
       />
 
-      {/* Global Contact Inquiry Modal */}
+      {/* Inquiry Modal */}
       <ContactModal
-        theme="dark"
+        theme="light"
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
       />
