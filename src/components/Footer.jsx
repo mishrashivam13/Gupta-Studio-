@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ArrowUp, Clapperboard } from 'lucide-react';
-import logoImg from '../assets/logo/logo.png';
+import logoImg from '../assets/logo/logo (3).png';
 
 export default function Footer({ onOpenContact }) {
   const scrollToTop = () => {
@@ -26,7 +26,7 @@ export default function Footer({ onOpenContact }) {
                 alt="Gupta Studio Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
-              <span className="text-[10px] font-semibold tracking-widest text-[#C9A227] uppercase flex items-center gap-1">
+              <span className="text-[10px] font-semibold tracking-widest text-[#fff] uppercase flex items-center gap-1">
                 <Clapperboard className="w-3 h-3" /> Short Drama & AI Content
               </span>
             </div>

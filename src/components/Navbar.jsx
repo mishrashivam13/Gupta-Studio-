@@ -64,7 +64,7 @@ export default function Navbar({ onOpenContact }) {
           <div className="hidden md:flex items-center gap-4 shrink-0">
             <button
               onClick={onOpenContact}
-              className="px-5 py-2.5 rounded-md font-semibold text-[#fff] bg-[#053bcd] hover:bg-[#DBB640] transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-md font-semibold text-[#fff] bg-[#053bcd] hover:bg-[#053bcd] transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
             >
               <span>Get Custom Content</span>
               <ArrowRight className="w-4 h-4" />
