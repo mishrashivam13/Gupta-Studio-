@@ -109,8 +109,8 @@ export default function Hero({ onOpenContact }) {
             mounted ? 'scale-105 opacity-85' : 'scale-110 opacity-0'
           }`}
         >
-          <source src="/src/assets/The best creatively distinctive and impactful collage animation_1080p.mp4" type="video/mp4" />
-          <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+          <source src="/src/assets/herovid.mp4" type="video/mp4" />
+          {/* <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" /> */}
         </video>
 
         {/* Minimalist Dark Gradient Overlay */}
