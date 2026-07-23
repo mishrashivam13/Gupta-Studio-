@@ -132,7 +132,7 @@ export default function Hero({ onOpenContact }) {
       {/* Letterbox bars — cinema aspect-ratio framing */}
       <div className="letterbox-bar h-3 sm:h-5 w-full relative z-20" />
 
-      <div className="grain relative pt-14 pb-10 md:pt-20 md:pb-16 min-h-[80vh] flex flex-col justify-center items-center">
+      <div className="grain relative pt-14 pb-10 md:pt-20 md:pb-16 min-h-screen flex flex-col justify-center items-center">
 
         {/* Background video */}
         <div className="absolute inset-0 z-0 overflow-hidden">
