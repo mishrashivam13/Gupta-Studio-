@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
-import logoImg from '../assets/logo/logo.png';
+import logoImg from '../assets/logo/logo (3).png';
 
 export default function Navbar({ onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
@@ -64,7 +64,7 @@ export default function Navbar({ onOpenContact }) {
           <div className="hidden md:flex items-center gap-4 shrink-0">
             <button
               onClick={onOpenContact}
-              className="px-5 py-2.5 rounded-md font-semibold text-[#0B0B0E] bg-[#C9A227] hover:bg-[#DBB640] transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-md font-semibold text-[#fff] bg-[#053bcd] hover:bg-[#DBB640] transition-colors text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
             >
               <span>Get Custom Content</span>
               <ArrowRight className="w-4 h-4" />

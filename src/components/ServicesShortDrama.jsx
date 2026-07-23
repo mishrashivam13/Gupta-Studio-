@@ -103,7 +103,7 @@ export default function ServicesShortDrama({ onOpenContact }) {
             <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">
               Need Original Short Drama Content for Your Platform?
             </h3>
-            <p className="text-sm max-w-2xl text-slate-300">
+            <p className="text-sm max-w-2xl text-slate-700">
               Gupta Studio supplies ready-to-stream short drama video series, scripts, and dubbing tracks tailored for global OTT platforms and content creators.
             </p>
           </div>

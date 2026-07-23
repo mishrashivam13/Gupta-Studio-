@@ -4,7 +4,7 @@
   html {
     font-size: 16px;
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
     background-color: #ffffff;
     color: #0f172a;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -17,8 +17,8 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Inter', system-ui, sans-serif;
-    letter-spacing: -0.03em;
+    font-family: 'Poppins', system-ui, sans-serif;
+    letter-spacing: -0.02em;
     font-weight: 800;
   }
 }
