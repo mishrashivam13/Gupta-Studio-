@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Sparkles, ChevronRight, Video, Smartphone, Globe } from 'lucide-react';
+import { ChevronRight, Video, Globe, Clapperboard, Sparkles } from 'lucide-react';
 
-// Counts a number up from 0 to `end` once it enters view, and eases out near the finish
-function useCountUp(end, isVisible, duration = 1400) {
+function useCountUp(end, isVisible, duration = 1500) {
   const [value, setValue] = useState(0);
   const rafRef = useRef(null);
 
@@ -11,7 +10,7 @@ function useCountUp(end, isVisible, duration = 1400) {
     const start = performance.now();
     const animate = (now) => {
       const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.round(end * eased));
       if (progress < 1) rafRef.current = requestAnimationFrame(animate);
     };
@@ -22,19 +21,17 @@ function useCountUp(end, isVisible, duration = 1400) {
   return value;
 }
 
-export default function Hero({ theme, onOpenContact }) {
+export default function Hero({ onOpenContact }) {
   const videoRef = useRef(null);
   const statsRef = useRef(null);
   const [mounted, setMounted] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
 
-  // Orchestrated entrance: badge -> headline -> subtext -> pills -> CTAs -> stats
   useEffect(() => {
     const t = requestAnimationFrame(() => setMounted(true));
     return () => cancelAnimationFrame(t);
   }, []);
 
-  // Trigger the stat counters only once they actually scroll into view
   useEffect(() => {
     const el = statsRef.current;
     if (!el) return;
@@ -51,8 +48,8 @@ export default function Hero({ theme, onOpenContact }) {
     return () => observer.disconnect();
   }, []);
 
-  const dramaCount = useCountUp(50, statsVisible);
-  const shotsCount = useCountUp(10000, statsVisible);
+  const seriesCount = useCountUp(500, statsVisible);
+  const clipsCount = useCountUp(10000, statsVisible);
   const langCount = useCountUp(25, statsVisible);
 
   const handleTimeUpdate = () => {
@@ -65,52 +62,38 @@ export default function Hero({ theme, onOpenContact }) {
     }
   };
 
-  // Stagger helper: each element rises + fades in on its own delay after mount
-  const reveal = (delayMs, extra = '') =>
-    `transition-all duration-700 ease-out ${extra} ${
-      mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-    }`;
-  const revealStyle = (delayMs) => ({ transitionDelay: `${delayMs}ms` });
+  const reveal = (delay, extra = '') =>
+    `transition-all duration-700 ease-out ${extra} ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-7'}`;
+  const revealStyle = (delay) => ({ transitionDelay: `${delay}ms` });
 
   return (
-    <section className={`relative pt-28 pb-16 md:pt-44 md:pb-32 overflow-hidden min-h-[95vh] flex flex-col justify-start md:justify-center items-center ${theme === 'light' ? 'hero-light' : ''}`}>
+    <section className="relative pt-24 pb-4 md:pt-40 md:pb-28 overflow-hidden md:min-h-[88vh] flex flex-col justify-center items-center bg-[#030305]">
 
       <style>{`
-        @keyframes orbFloatA {
-          0%, 100% { transform: translate(-50%, -50%) scale(1); }
-          50% { transform: translate(-46%, -54%) scale(1.08); }
-        }
-        @keyframes orbFloatB {
-          0%, 100% { transform: translate(-50%, 0) scale(1); }
-          50% { transform: translate(-54%, -3%) scale(1.05); }
-        }
-        @keyframes shimmerSweep {
-          0% { transform: translateX(-120%) skewX(-15deg); }
-          100% { transform: translateX(220%) skewX(-15deg); }
-        }
-        @keyframes gridDrift {
-          0% { background-position: 0 0; }
-          100% { background-position: 4rem 4rem; }
-        }
+        @keyframes orbDriftA { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-46%, -54%) scale(1.1); } }
+        @keyframes orbDriftB { 0%, 100% { transform: translate(-50%, 0) scale(1); } 50% { transform: translate(-54%, -4%) scale(1.06); } }
+        @keyframes cursiveGlow { 0%, 100% { text-shadow: 0 0 22px rgba(251,191,36,0.35), 0 0 50px rgba(251,191,36,0.12); } 50% { text-shadow: 0 0 32px rgba(251,191,36,0.55), 0 0 70px rgba(251,191,36,0.2); } }
+        @keyframes cursiveGlowCyan { 0%, 100% { text-shadow: 0 0 22px rgba(34,211,238,0.35), 0 0 50px rgba(34,211,238,0.12); } 50% { text-shadow: 0 0 32px rgba(34,211,238,0.55), 0 0 70px rgba(34,211,238,0.2); } }
+        @keyframes shimmerSweep { 0% { transform: translateX(-120%) skewX(-15deg); } 100% { transform: translateX(220%) skewX(-15deg); } }
+        @keyframes pillFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes pillFloatReverse { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+        .glow-amber { animation: cursiveGlow 3.4s ease-in-out infinite; }
+        .glow-cyan { animation: cursiveGlowCyan 3.4s ease-in-out infinite; }
+        .cta-shimmer { position: relative; overflow: hidden; }
         .cta-shimmer::after {
-          content: '';
-          position: absolute;
-          top: 0; left: 0;
-          width: 40%; height: 100%;
-          background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
-          animation: shimmerSweep 2.8s ease-in-out infinite;
-          animation-delay: 1.2s;
+          content: ''; position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+          background: linear-gradient(115deg, transparent, rgba(255,255,255,0.6), transparent);
+          animation: shimmerSweep 2.6s ease-in-out infinite; animation-delay: 1s;
         }
+        .pill-float { animation: pillFloat 4.5s ease-in-out infinite; }
+        .pill-float-reverse { animation: pillFloatReverse 5s ease-in-out infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .cta-shimmer::after,
-          .orb-a, .orb-b, .grid-drift, .badge-spin {
-            animation: none !important;
-          }
+          .glow-amber, .glow-cyan, .cta-shimmer::after, .pill-float, .pill-float-reverse, .orb-a, .orb-b { animation: none !important; }
         }
       `}</style>
 
-      {/* Seamless High-Definition HTML5 Background Video Loop (Zero Ads, Zero Logos, Zero End Screens) */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-slate-950">
+      {/* Minimalist Background Video Loop */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#030305]">
         <video
           ref={videoRef}
           autoPlay
@@ -122,140 +105,94 @@ export default function Hero({ theme, onOpenContact }) {
             e.target.currentTime = 0.1;
             e.target.play();
           }}
-          className={`w-full h-full object-cover transition-all duration-[1400ms] ease-out ${
-            mounted ? 'scale-105 opacity-90' : 'scale-110 opacity-0'
-          } ${theme === 'light' ? 'brightness-100 contrast-110 saturate-110' : 'brightness-110 contrast-110'}`}
+          className={`w-full h-full object-cover transition-all duration-[1400ms] ease-out brightness-105 contrast-110 ${
+            mounted ? 'scale-105 opacity-85' : 'scale-110 opacity-0'
+          }`}
         >
+          <source src="/src/assets/The best creatively distinctive and impactful collage animation_1080p.mp4" type="video/mp4" />
           <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
         </video>
 
-        {/* Soft Contrast Gradient Overlay for 100% Text Readability */}
-        {theme === 'light' ? (
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/42 to-slate-950/78" />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/75 via-slate-950/45 to-slate-950/90" />
-        )}
+        {/* Minimalist Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030305]/95 via-[#030305]/60 to-[#030305]/95 pointer-events-none" />
       </div>
 
-      {/* Luminous Glowing Ambient Orbs — now drifting, not just pulsing in place */}
+      {/* Floating Ambient Glow Orbs — drifting instead of static pulse */}
       <div
-        className="orb-a absolute top-1/2 left-1/2 w-[750px] h-[750px] bg-amber-500/15 rounded-full blur-[170px] pointer-events-none"
-        style={{ animation: 'orbFloatA 9s ease-in-out infinite' }}
+        className="orb-a absolute top-1/2 left-1/2 w-[320px] sm:w-[650px] h-[320px] sm:h-[650px] bg-amber-500/10 rounded-full blur-[130px] sm:blur-[180px] pointer-events-none"
+        style={{ animation: 'orbDriftA 9s ease-in-out infinite' }}
       />
       <div
-        className="orb-b absolute top-1/3 left-1/2 w-[550px] h-[550px] bg-cyan-500/15 rounded-full blur-[150px] pointer-events-none"
-        style={{ animation: 'orbFloatB 11s ease-in-out infinite' }}
+        className="orb-b absolute top-1/3 left-1/2 w-[220px] sm:w-[450px] h-[220px] sm:h-[450px] bg-cyan-500/10 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none"
+        style={{ animation: 'orbDriftB 11s ease-in-out infinite' }}
       />
 
-      {/* Grid Pattern Overlay — slow drift adds depth without being loud */}
-      <div
-        className="grid-drift absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none"
-        style={{ animation: 'gridDrift 18s linear infinite' }}
-      />
+      {/* Centered Minimalist Content Container */}
+      <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 text-center space-y-5 sm:space-y-7">
 
-      {/* Centered Content Container */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 relative z-10 text-center space-y-8">
-
-        {/* Top Studio Badge */}
-        {/* <div
-          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs sm:text-sm font-bold tracking-wider uppercase shadow-xl backdrop-blur-md ${reveal(0)} ${
-            theme === 'light'
-              ? 'bg-slate-950/70 border-white/25 text-amber-300 shadow-black/30'
-              : 'bg-slate-950/85 border-amber-500/50 text-amber-400 shadow-amber-500/20'
-          }`}
-          style={revealStyle(0)}
-        >
-          <Sparkles className="badge-spin w-4 h-4 text-amber-500" style={{ animation: 'spin 8s linear infinite' }} />
-          <span>NEXT-GEN ENTERTAINMENT & MEDIA TECHNOLOGY</span>
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-        </div> */}
-
-        {/* Headline + Subtext */}
-        <div className="space-y-4 max-w-4xl mx-auto">
-          <h1
-            className={`text-3xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] ${reveal(120)}`}
-            style={revealStyle(120)}
-          >
-            Powering <span className="text-gradient-gold">Short Drama Content</span> & <span className="text-gradient-cyan">AI Film Studios</span>
+        {/* Minimalist Headline */}
+        <div className={`space-y-3 max-w-3xl mx-auto ${reveal(0)}`} style={revealStyle(0)}>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.14] text-white">
+            We Provide <span className="glow-amber font-cursive text-amber-400 text-4xl sm:text-6xl lg:text-7xl font-normal">Short Drama Content</span> & <span className="glow-cyan font-cursive text-cyan-400 text-4xl sm:text-6xl lg:text-7xl font-normal">AI Movies</span>
           </h1>
 
-          <p
-            className={`text-base sm:text-xl lg:text-2xl font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-md ${reveal(240)} ${
-              theme === 'light' ? 'text-slate-100 font-semibold' : 'text-slate-200'
-            }`}
-            style={revealStyle(240)}
-          >
-            Gupta Studio Entertainment delivers end-to-end content solutions for compelling <span className="font-bold text-amber-500">Short Drama Series</span>, AI films, VFX and multilingual dubbing.
+          {/* Subtext */}
+          <p className="text-xs sm:text-lg lg:text-xl font-normal leading-relaxed max-w-2xl mx-auto text-slate-300">
+            Gupta Studio produces and supplies high-quality <span className="font-semibold text-amber-400">Short Drama Video Content</span>, scripts, and video series alongside studio-grade <span className="font-semibold text-cyan-400">AI Film & VFX Production Clips</span>.
           </p>
         </div>
 
-        {/* Service Pillars Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-semibold text-slate-200">
-          {[
-            { icon: Smartphone, color: 'text-amber-500', label: 'Short Drama Content Production' },
-            { icon: Video, color: 'text-cyan-500', label: 'Studio-Grade AI Movies & VFX' },
-            { icon: Globe, color: 'text-emerald-500', label: 'Global AI Localization & Dubbing' },
-          ].map(({ icon: Icon, color, label }, i) => (
-            <span
-              key={label}
-              className={`flex items-center gap-2 px-4.5 py-2.5 rounded-xl border backdrop-blur-md shadow-lg transition-transform duration-300 hover:scale-105 hover:-translate-y-0.5 ${reveal(
-                360 + i * 90
-              )} ${theme === 'light' ? 'bg-slate-950/70 border-white/25 text-white' : 'bg-slate-950/85 border-slate-800 text-slate-200'}`}
-              style={revealStyle(360 + i * 90)}
-            >
-              <Icon className={`w-4.5 h-4.5 ${color}`} /> {label}
-            </span>
-          ))}
+        {/* Floating Interactive Feature Pills */}
+        <div className={`flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-medium text-slate-200 ${reveal(150)}`} style={revealStyle(150)}>
+          <span className="pill-float flex items-center gap-1.5 px-3.5 py-2 rounded-2xl border border-white/10 bg-[#090a10]/85 backdrop-blur-md text-slate-200 shadow-xl transition-all duration-300 hover:border-amber-400/50 hover:-translate-y-0.5 hover:shadow-amber-500/20">
+            <Clapperboard className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-amber-400 shrink-0" /> Short Drama Content Supply
+          </span>
+          <span className="pill-float-reverse flex items-center gap-1.5 px-3.5 py-2 rounded-2xl border border-white/10 bg-[#090a10]/85 backdrop-blur-md text-slate-200 shadow-xl transition-all duration-300 hover:border-cyan-400/50 hover:-translate-y-0.5 hover:shadow-cyan-500/20">
+            <Video className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-cyan-400 shrink-0" /> AI Movies & War Shots
+          </span>
+          <span className="pill-float flex items-center gap-1.5 px-3.5 py-2 rounded-2xl border border-white/10 bg-[#090a10]/85 backdrop-blur-md text-slate-200 shadow-xl transition-all duration-300 hover:border-emerald-400/50 hover:-translate-y-0.5 hover:shadow-emerald-500/20">
+            <Globe className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-emerald-400 shrink-0" /> Global AI Voice Dubbing
+          </span>
         </div>
 
-        {/* Action Buttons — stay side-by-side even on small phones */}
-        <div className={`flex flex-row items-center justify-center gap-2.5 sm:gap-4 max-w-md mx-auto pt-2 ${reveal(700)}`} style={revealStyle(700)}>
+        {/* Action Buttons */}
+        <div className={`flex flex-row items-center justify-center gap-2.5 sm:gap-4 max-w-sm sm:max-w-md mx-auto pt-1 ${reveal(300)}`} style={revealStyle(300)}>
           <a
             href="#short-drama"
-            className="cta-shimmer relative overflow-hidden flex-1 sm:flex-none px-4 sm:px-9 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-extrabold text-slate-950 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:brightness-110 shadow-2xl shadow-amber-500/35 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-base cursor-pointer transform hover:-translate-y-1 hover:shadow-amber-500/50 active:translate-y-0 active:duration-100 whitespace-nowrap"
+            className="cta-shimmer flex-1 sm:flex-none w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-2xl font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:brightness-110 shadow-xl shadow-amber-500/25 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm cursor-pointer transform hover:-translate-y-1 hover:shadow-amber-500/40 active:translate-y-0 whitespace-nowrap"
           >
-            <span>Explore Content Services</span>
-            <ChevronRight className="hidden sm:block w-5 h-5 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+            <span>Get Short Drama Content</span>
+            <ChevronRight className="w-4 h-4 shrink-0" />
           </a>
 
           <a
-            href="#ai-films"
-            className={`flex-1 sm:flex-none px-4 sm:px-9 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold border transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 text-xs sm:text-base cursor-pointer shadow-xl hover:-translate-y-1 whitespace-nowrap ${
-              theme === 'light'
-                ? 'bg-slate-950/70 border-white/30 text-white hover:border-amber-400 hover:bg-slate-900/90'
-                : 'glass-panel border-slate-700/80 text-slate-100 hover:border-cyan-400'
-            }`}
+            href="#vfx-gallery"
+            className="flex-1 sm:flex-none w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-2xl font-bold border border-white/15 backdrop-blur-xl bg-[#090a10]/90 text-white hover:border-cyan-400 hover:bg-slate-900 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm cursor-pointer shadow-lg hover:-translate-y-1 whitespace-nowrap"
           >
-            <Video className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 shrink-0" />
-            <span>AI Film Services</span>
+            <Video className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span className="text-white">Watch AI Movie Videos</span>
           </a>
         </div>
 
-        {/* Key Stats Bar — counts up once it scrolls into view */}
-        <div
-          ref={statsRef}
-          className={`pt-10 max-w-4xl mx-auto grid grid-cols-3 gap-2.5 sm:gap-8 border-t border-slate-800/80 ${reveal(820)}`}
-          style={revealStyle(820)}
-        >
-          <div className={`px-2 py-4 sm:p-4 rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/40 ${
-            theme === 'light' ? 'bg-slate-950/65 border-white/20 shadow-lg shadow-black/20' : 'glass-panel border-slate-800 bg-slate-950/85'
-          }`}>
-            <div className="text-xl sm:text-4xl font-black font-mono text-white leading-tight">{dramaCount}+</div>
-            <div className="text-[11px] sm:text-sm font-medium mt-1 text-slate-200">Short Drama Series</div>
-          </div>
+        {/* Floating Minimalist Stats Bar — counts up once visible */}
+        <div ref={statsRef} className={`pt-4 sm:pt-8 max-w-3xl mx-auto border-t border-white/10 ${reveal(450)}`} style={revealStyle(450)}>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
 
-          <div className={`px-2 py-4 sm:p-4 rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/40 ${
-            theme === 'light' ? 'bg-slate-950/65 border-white/20 shadow-lg shadow-black/20' : 'glass-panel border-slate-800 bg-slate-950/85'
-          }`}>
-            <div className="text-lg sm:text-4xl font-black text-amber-500 font-mono leading-tight whitespace-nowrap">{shotsCount.toLocaleString()}+</div>
-            <div className="text-[11px] sm:text-sm font-medium mt-1 text-slate-200">AI Video Shots Produced</div>
-          </div>
+            <div className="minimal-card p-3 sm:p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/30 rounded-2xl">
+              <div className="text-base sm:text-2xl lg:text-3xl font-black font-mono text-white tracking-tight">{seriesCount}+</div>
+              <div className="text-[8px] sm:text-xs font-medium mt-0.5 text-slate-300 leading-tight">Short Drama Series</div>
+            </div>
 
-          <div className={`px-2 py-4 sm:p-4 rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40 ${
-            theme === 'light' ? 'bg-slate-950/65 border-white/20 shadow-lg shadow-black/20' : 'glass-panel border-slate-800 bg-slate-950/85'
-          }`}>
-            <div className="text-xl sm:text-4xl font-black text-cyan-500 font-mono leading-tight">{langCount}+</div>
-            <div className="text-[11px] sm:text-sm font-medium mt-1 text-slate-200">Global Voice Languages</div>
+            <div className="minimal-card p-3 sm:p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/30 rounded-2xl">
+              <div className="text-sm sm:text-2xl lg:text-3xl font-black font-mono text-amber-400 tracking-tight whitespace-nowrap">{clipsCount.toLocaleString()}+</div>
+              <div className="text-[8px] sm:text-xs font-medium mt-0.5 text-slate-300 leading-tight">AI Clips Generated</div>
+            </div>
+
+            <div className="minimal-card p-3 sm:p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 rounded-2xl">
+              <div className="text-base sm:text-2xl lg:text-3xl font-black font-mono text-cyan-400 tracking-tight">{langCount}+</div>
+              <div className="text-[8px] sm:text-xs font-medium mt-0.5 text-slate-300 leading-tight">Global Voice Languages</div>
+            </div>
+
           </div>
         </div>
 

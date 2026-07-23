@@ -6,101 +6,75 @@ import ServicesAIFilms from './components/ServicesAIFilms';
 import AIFilmGallery from './components/AIFilmGallery';
 import AboutUs from './components/AboutUs';
 import PipelineWorkflow from './components/PipelineWorkflow';
-import CostEstimator from './components/CostEstimator';
 import ContactModal from './components/ContactModal';
 import Footer from './components/Footer';
 import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [selectedServicesForEstimate, setSelectedServicesForEstimate] = useState([]);
-  const [estimatedPrice, setEstimatedPrice] = useState(0);
 
   // Initialize Scroll Reveal Animations
   useScrollReveal();
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'light') {
-      root.classList.add('light');
-    } else {
-      root.classList.remove('light');
-    }
-  }, [theme]);
+    document.documentElement.classList.remove('light');
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const handleOpenContactWithServices = (services, price) => {
-    setSelectedServicesForEstimate(services);
-    setEstimatedPrice(price);
-    setIsContactOpen(true);
+    setTheme(prev => (prev === 'dark' ? 'dark' : 'dark'));
   };
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-400 ${
-      theme === 'light' 
-        ? 'bg-[#fffdf8] text-slate-900 selection:bg-amber-500 selection:text-slate-950' 
-        : 'bg-[#070605] text-slate-100 selection:bg-amber-400 selection:text-slate-950'
-    }`}>
+    <div className="min-h-screen font-sans bg-[#050508] text-slate-100 selection:bg-amber-400 selection:text-slate-950">
       
-      {/* Top Navigation Bar with Theme Switcher */}
+      {/* Studio.Design Header Bar */}
       <Navbar
-        theme={theme}
+        theme="dark"
         onToggleTheme={toggleTheme}
         onOpenContact={() => setIsContactOpen(true)}
       />
 
       {/* Main Page Sections */}
-      <main>
+      <main className="bg-[#050508]">
         <Hero
-          theme={theme}
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <ServicesShortDrama
-          theme={theme}
+          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <ServicesAIFilms
-          theme={theme}
+          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <AIFilmGallery
-          theme={theme}
+          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
         <AboutUs
-          theme={theme}
+          theme="dark"
           onOpenContact={() => setIsContactOpen(true)}
         />
 
-        <PipelineWorkflow theme={theme} />
-
-        <CostEstimator
-          theme={theme}
-          onOpenContactWithServices={handleOpenContactWithServices}
-        />
+        <PipelineWorkflow theme="dark" />
       </main>
 
       {/* Footer */}
       <Footer
-        theme={theme}
+        theme="dark"
         onOpenContact={() => setIsContactOpen(true)}
       />
 
       {/* Global Contact Inquiry Modal */}
       <ContactModal
-        theme={theme}
+        theme="dark"
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
-        initialServices={selectedServicesForEstimate}
-        initialEstimate={estimatedPrice}
       />
 
     </div>

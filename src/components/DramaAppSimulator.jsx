@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Smartphone, Play, Pause, Heart, Share2, MessageCircle, Coins, Lock, Sparkles, Volume2, VolumeX, ChevronRight, Check } from 'lucide-react';
 
 export default function DramaAppSimulator({ theme }) {
-  const [activeAppIndex, setActiveAppIndex] = useState(0);
+  const [activeSeriesIndex, setActiveSeriesIndex] = useState(0);
   const [activeEpisode, setActiveEpisode] = useState(1);
   const [coins, setCoins] = useState(60);
   const [unlockedEpisodes, setUnlockedEpisodes] = useState([1, 2]);
@@ -13,55 +13,55 @@ export default function DramaAppSimulator({ theme }) {
   const [showUnlockModal, setShowUnlockModal] = useState(false);
   const videoRef = useRef(null);
 
-  // Short Drama Apps & Platforms (Real App Names)
-  const dramaApps = [
+  // Short Drama Content Categories (Zero Specific App Names)
+  const dramaSeries = [
     {
-      id: 'drustee',
-      appName: 'Drustee TV',
-      category: 'Top Rated App',
-      poster: '/src/assets/splash_logo.png',
+      id: 'romance',
+      title: "The Secret Billionaire's Double Life",
+      category: 'CEO Romance',
+      poster: '/assets/drama1.jpg',
       videoUrl: 'https://vjs.zencdn.net/v/oceans.mp4',
-      downloads: '5M+ Downloads',
+      views: '5M+ Views',
       rating: '4.9 ★',
-      synopsis: 'Premier vertical short drama streaming platform with 100+ exclusive billionaire romance & revenge micro-series.',
+      synopsis: 'Posing as a humble bodyguard, Ethan conceals his trillion-dollar identity to protect the woman he loves.',
       episodes: 60
     },
     {
-      id: 'flipshort',
-      appName: 'FlipShort (FlipShop)',
-      category: 'Viral Platform',
+      id: 'revenge',
+      title: 'Revenge of the Heiress',
+      category: 'Suspense & Drama',
       poster: '/assets/drama2.jpg',
       videoUrl: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-      downloads: '3M+ Downloads',
+      views: '3M+ Views',
       rating: '4.8 ★',
-      synopsis: 'Next-gen short video drama app with coin monetization, daily check-in rewards, and auto multilingual dubbing.',
+      synopsis: 'Framed and exiled five years ago, Victoria returns with unmatched wealth and tactical brilliance to reclaim her family empire.',
       episodes: 45
     },
     {
-      id: 'skdrama',
-      appName: 'SK Drama Engine',
-      category: 'Global Release',
+      id: 'scifi',
+      title: 'Cyberpunk Awakening 2099',
+      category: 'AI Sci-Fi Series',
       poster: '/assets/vfx.jpg',
       videoUrl: 'https://vjs.zencdn.net/v/oceans.mp4',
-      downloads: '2M+ Downloads',
+      views: '2M+ Views',
       rating: '4.9 ★',
-      synopsis: 'Cross-platform iOS, Android & Web drama engine built by Gupta Studio Entertainment with AES-128 DRM encryption.',
+      synopsis: 'In a neon city ruled by rogue AI, a rogue hacker unlocks a forbidden memory code that could change humanity forever.',
       episodes: 50
     },
-    // {
-    //   id: 'dramabox',
-    //   appName: 'DramaBox Pro',
-    //   category: 'Enterprise Edition',
-    //   poster: '/assets/hero.jpg',
-    //   videoUrl: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
-    //   downloads: '8M+ Downloads',
-    //   rating: '5.0 ★',
-    //   synopsis: 'High-volume short drama portal with built-in subscription tiers, rewarded ad unlocks, and real-time revenue analytics.',
-    //   episodes: 80
-    // }
+    {
+      id: 'war',
+      title: 'War at Sea: Naval Supremacy',
+      category: 'War & Action AI Movie',
+      poster: '/assets/war_at_sea.jpg',
+      videoUrl: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+      views: '8M+ Views',
+      rating: '5.0 ★',
+      synopsis: 'High-octane 4K AI movie scene featuring an epic naval battle at sea with stormy ocean waves and fiery cannon explosions.',
+      episodes: 80
+    }
   ];
 
-  const currentApp = dramaApps[activeAppIndex];
+  const currentSeries = dramaSeries[activeSeriesIndex];
 
   const handleEpisodeClick = (epNum) => {
     if (unlockedEpisodes.includes(epNum)) {
@@ -115,46 +115,46 @@ export default function DramaAppSimulator({ theme }) {
     <section id="app-simulator" className={`py-24 relative border-t transition-colors ${
       theme === 'light' 
         ? 'bg-slate-100 border-slate-200' 
-        : 'bg-[#0b0f19] border-slate-800'
+        : 'bg-[#080b12] border-slate-800'
     }`}>
       
-      {/* Background Glow */}
+      {/* Background Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-amber-500/5 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header - 100% Always Visible */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-fade-up">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-wider">
-            <Smartphone className="w-4 h-4" /> Live Mobile App Simulator
+            <Smartphone className="w-4 h-4" /> Live Mobile Video Stream
           </div>
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight ${theme === 'light' ? 'text-slate-950' : 'text-white'}`}>
-            Explore Our <span className="text-gradient-gold">Short Drama Platforms</span>
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight ${theme === 'light' ? 'text-slate-950' : 'text-white'}`}>
+            Explore Our <span className="font-cursive text-amber-500 text-4xl sm:text-5xl lg:text-6xl font-normal">Short Drama Content</span> Catalog
           </h2>
-          <p className={`text-base sm:text-lg ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-200'}`}>
-            Test live mobile drama apps built by Gupta Studio Entertainment: <span className="font-bold text-amber-500">Drustee TV</span>, <span className="font-bold text-cyan-400">FlipShort (FlipShop)</span>, <span className="font-bold text-amber-500">SK Drama</span> & <span className="font-bold text-cyan-400">DramaBox Pro</span>.
+          <p className={`text-base sm:text-lg ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-300'}`}>
+            Test live short drama series and AI movie clips supplied by Gupta Studio: CEO Romance, Suspense, AI Sci-Fi, and War at Sea Action.
           </p>
         </div>
 
-        {/* Main Grid - 100% Always Visible */}
+        {/* Main Grid */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Interactive Smartphone Frame with Live Video Player */}
-          <div className="lg:col-span-6 flex justify-center reveal-slide-left">
+          <div className="lg:col-span-6 flex justify-center">
             
             {/* Phone Frame */}
-            <div className="relative w-[340px] max-w-[calc(100vw-2rem)] sm:w-[380px] h-[680px] bg-slate-950 rounded-[48px] border-[10px] border-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-between select-none">
+            <div className="relative w-[340px] sm:w-[380px] h-[680px] bg-slate-950 rounded-[48px] border-[10px] border-slate-900 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col justify-between select-none">
               
               {/* Speaker Notch */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-5 bg-slate-900 rounded-b-2xl z-30 flex items-center justify-center">
                 <div className="w-12 h-1 bg-slate-950 rounded-full" />
               </div>
 
-              {/* App Header Bar inside Phone */}
+              {/* Header Bar inside Phone */}
               <div className="pt-7 px-4 pb-2 z-20 flex items-center justify-between bg-gradient-to-b from-slate-950/95 via-slate-950/70 to-transparent">
                 <div className="flex items-center gap-1.5 text-xs font-extrabold text-amber-400">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>{currentApp.appName}</span>
+                  <span>Gupta Studio Content</span>
                 </div>
 
                 <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold shadow-sm">
@@ -169,16 +169,17 @@ export default function DramaAppSimulator({ theme }) {
                 {/* HTML5 Video Element */}
                 <video
                   ref={videoRef}
-                  key={currentApp.id + activeEpisode}
+                  key={currentSeries.id + activeEpisode}
                   autoPlay
                   loop
                   muted={isMuted}
                   playsInline
+                  poster={currentSeries.poster}
                   className={`w-full h-full object-cover transition-all duration-500 ${
                     !unlockedEpisodes.includes(activeEpisode) ? 'filter blur-md brightness-40' : ''
                   }`}
                 >
-                  <source src={currentApp.videoUrl} type="video/mp4" />
+                  <source src={currentSeries.videoUrl} type="video/mp4" />
                 </video>
 
                 {/* Video Overlay Tap to Play/Pause */}
@@ -234,14 +235,14 @@ export default function DramaAppSimulator({ theme }) {
                       Ep. {activeEpisode}
                     </span>
                     <span className="text-xs font-bold text-cyan-400">
-                      {currentApp.appName} • {currentApp.category}
+                      {currentSeries.category}
                     </span>
                   </div>
                   <h4 className="text-sm font-bold text-white line-clamp-1">
-                    {currentApp.appName} Exclusive Series
+                    {currentSeries.title}
                   </h4>
                   <p className="text-[11px] text-slate-300 line-clamp-2 leading-relaxed">
-                    {currentApp.synopsis}
+                    {currentSeries.synopsis}
                   </p>
                 </div>
 
@@ -255,7 +256,7 @@ export default function DramaAppSimulator({ theme }) {
                       Unlock Episode {activeEpisode}
                     </h4>
                     <p className="text-xs text-slate-300 max-w-xs">
-                      Unlock this premium episode on <span className="text-amber-400 font-bold">{currentApp.appName}</span> for <span className="text-amber-400 font-bold">10 Coins</span>.
+                      Unlock this premium episode for <span className="text-amber-400 font-bold">10 Coins</span>.
                     </p>
 
                     <div className="w-full space-y-2 pt-2">
@@ -284,7 +285,7 @@ export default function DramaAppSimulator({ theme }) {
               <div className="p-3 bg-slate-950 border-t border-slate-800/80 z-20 space-y-2">
                 <div className="flex items-center justify-between text-[11px] font-bold text-slate-400">
                   <span>Select Episode</span>
-                  <span className="text-amber-400">{unlockedEpisodes.length}/{currentApp.episodes} Unlocked</span>
+                  <span className="text-amber-400">{unlockedEpisodes.length}/{currentSeries.episodes} Unlocked</span>
                 </div>
                 <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
                   {Array.from({ length: 8 }, (_, i) => i + 1).map((ep) => {
@@ -313,31 +314,31 @@ export default function DramaAppSimulator({ theme }) {
             </div>
           </div>
 
-          {/* Right Column: Short Drama App Platforms Selector Panel */}
-          <div className="lg:col-span-6 space-y-6 reveal-slide-right">
+          {/* Right Column: Short Drama Content Selector Panel */}
+          <div className="lg:col-span-6 space-y-6">
             <div className="space-y-3">
               <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">
-                Interactive Platform Selector
+                Interactive Content Catalog
               </span>
               <h3 className={`text-2xl sm:text-3xl font-extrabold ${theme === 'light' ? 'text-slate-950' : 'text-white'}`}>
-                Select a Short Drama App to Demo
+                Select a Short Drama Series to Preview
               </h3>
               <p className={`text-sm ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-300'}`}>
-                Click any app platform client below to preview its live mobile UI and video playback inside the smartphone simulator.
+                Click any short drama series below to load and play its live video content inside the mobile player frame.
               </p>
             </div>
 
-            {/* Short Drama App Client Cards */}
+            {/* Short Drama Series Cards (Zero App Names) */}
             <div className="space-y-3">
-              {dramaApps.map((app, idx) => (
+              {dramaSeries.map((series, idx) => (
                 <div
-                  key={app.id}
+                  key={series.id}
                   onClick={() => {
-                    setActiveAppIndex(idx);
+                    setActiveSeriesIndex(idx);
                     setActiveEpisode(1);
                   }}
                   className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex items-center gap-4 ${
-                    activeAppIndex === idx
+                    activeSeriesIndex === idx
                       ? theme === 'light'
                         ? 'bg-white border-amber-500 shadow-xl ring-2 ring-amber-500/40'
                         : 'bg-slate-900 border-amber-500 shadow-xl shadow-amber-500/10 ring-1 ring-amber-500/40'
@@ -347,27 +348,27 @@ export default function DramaAppSimulator({ theme }) {
                   }`}
                 >
                   <img
-                    src={app.poster}
-                    alt={app.appName}
+                    src={series.poster}
+                    alt={series.title}
                     className="w-16 h-20 object-cover rounded-xl shrink-0 shadow-md"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-600 font-extrabold text-[10px]">
-                        {app.category}
+                        {series.category}
                       </span>
                       <span className={`text-xs font-mono font-bold ${theme === 'light' ? 'text-slate-700' : 'text-cyan-400'}`}>
-                        {app.downloads}
+                        {series.views}
                       </span>
                     </div>
                     <h4 className={`text-lg font-extrabold truncate mt-1 ${theme === 'light' ? 'text-slate-950' : 'text-white'}`}>
-                      {app.appName}
+                      {series.title}
                     </h4>
                     <p className={`text-xs line-clamp-1 mt-0.5 ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-300'}`}>
-                      {app.synopsis}
+                      {series.synopsis}
                     </p>
                   </div>
-                  <ChevronRight className={`w-5 h-5 shrink-0 ${activeAppIndex === idx ? 'text-amber-500' : 'text-slate-400'}`} />
+                  <ChevronRight className={`w-5 h-5 shrink-0 ${activeSeriesIndex === idx ? 'text-amber-500' : 'text-slate-400'}`} />
                 </div>
               ))}
             </div>
@@ -375,8 +376,8 @@ export default function DramaAppSimulator({ theme }) {
             {/* Key Features Pill Bar */}
             <div className={`grid grid-cols-2 gap-4 pt-4 border-t ${theme === 'light' ? 'border-slate-300' : 'border-slate-800'}`}>
               <div className={`p-4 rounded-xl border space-y-1 ${theme === 'light' ? 'bg-white border-slate-300 shadow-sm' : 'bg-slate-900/80 border-slate-800'}`}>
-                <div className="text-xs font-bold text-cyan-600">Coin Store & Monetization</div>
-                <p className={`text-[11px] ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-400'}`}>Integrated payment APIs with in-app coin shop & Apple/Google billing.</p>
+                <div className="text-xs font-bold text-cyan-600">Episodic Scripting & Story Breaking</div>
+                <p className={`text-[11px] ${theme === 'light' ? 'text-slate-700 font-medium' : 'text-slate-400'}`}>High-cliffhanger screenplay writing tailored for micro-dramas.</p>
               </div>
               <div className={`p-4 rounded-xl border space-y-1 ${theme === 'light' ? 'bg-white border-slate-300 shadow-sm' : 'bg-slate-900/80 border-slate-800'}`}>
                 <div className="text-xs font-bold text-amber-600">25+ Language AI Dubbing</div>

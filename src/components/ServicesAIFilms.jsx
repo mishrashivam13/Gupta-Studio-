@@ -1,107 +1,99 @@
 import React from 'react';
-import { Video, Film, Sparkles, Cpu, Wand2, CheckCircle } from 'lucide-react';
+import { Cpu, Film, Sparkles, Wand2, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
 
-export default function ServicesAIFilms({ theme, onOpenContact }) {
+export default function ServicesAIFilms({ onOpenContact }) {
   const aiFilmServices = [
     {
-      icon: <Video className="w-6 h-6 text-cyan-500" />,
-      title: 'AI Film & TV Production',
-      description: 'AI-native production pipeline delivering high-volume, broadcast-grade film and series content. Produced over 10,000+ AI-generated shots across genres.',
-      highlights: ['Script-to-Screen AI', '4K Cinematic Output', 'Broadcast Compliance', 'Rapid Episode Delivery']
+      icon: <Film className="w-6 h-6 text-cyan-400" />,
+      title: 'Full AI Generative Movies',
+      description: 'Script-to-screen cinematic featurette production utilizing Runway Gen-3, Midjourney v6, and custom LoRA neural models for high consistency.',
+      features: ['100% AI Generated Shots', 'Actor Facial Continuity', '4K Cinema Resolution', 'Orchestral Score Sync']
     },
     {
-      icon: <Film className="w-6 h-6 text-amber-500" />,
-      title: 'AI Movie Studio Operations',
-      description: 'Studio-grade environment managing schedules, editorial oversight, character consistency, and full delivery specifications for streaming networks and studios.',
-      highlights: ['Character Continuity', 'Editorial Supervision', 'Multi-Camera AI Framing', 'Color & Sound Master']
+      icon: <Wand2 className="w-6 h-6 text-purple-400" />,
+      title: 'AI War & Action Sequences',
+      description: 'High-octane war battles at sea, explosions, stormy ocean visual effects, and intense action sequences created with generative AI.',
+      features: ['Naval Warfare Battle Scenes', 'Stormy Ocean Simulations', 'Fiery Explosions & Smoke', 'Dynamic Camera FX']
     },
     {
-      icon: <Wand2 className="w-6 h-6 text-purple-500" />,
-      title: 'Generative AI VFX & Post-Production',
-      description: 'Integrating advanced AI visual effects into traditional VFX pipelines. Shots maintain lighting, camera tracking, and cut seamlessly with live action.',
-      highlights: ['AI Matte Painting', 'Digital Environment FX', 'Generative De-aging', 'Complex CGI Replacement']
+      icon: <Cpu className="w-6 h-6 text-amber-400" />,
+      title: 'Custom Actor LoRA Training',
+      description: 'Training custom AI neural character weights to guarantee 100% identical facial features, clothing, and expressions across all movie scenes.',
+      features: ['Custom Face Embeddings', 'Wardrobe Lock Technology', 'Expression Matching', 'Environment Anchoring']
     },
     {
-      icon: <Cpu className="w-6 h-6 text-emerald-500" />,
-      title: 'Bespoke AI Pipeline Design',
-      description: 'We design and construct tailored AI pipelines for studios, production teams, and agencies to accelerate their creative post-production workflow.',
-      highlights: ['Custom Workflow Build', 'Rights & IP Management', 'Model Fine-Tuning', 'Studio Team Training']
+      icon: <Layers className="w-6 h-6 text-emerald-400" />,
+      title: 'Generative AI VFX & Compositing',
+      description: 'Replacing green screen backgrounds with hyper-realistic AI environments, matte paintings, and 3D digital effects compositing.',
+      features: ['AI Matte Painting', 'Background Replacement', '3D Scene Integration', 'Studio Color Grading']
     }
   ];
 
   return (
-    <section id="ai-films" className={`py-24 relative border-t ${theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-950 border-slate-800'}`}>
+    <section id="ai-films" className="py-24 relative border-t border-[#181a28] bg-[#050508]">
       
-      {/* Glow Orbs */}
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none" />
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-init">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-xs font-bold uppercase tracking-wider">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-fade-up">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121422] border border-[#22263d] text-cyan-400 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" /> Next-Gen AI Cinema
           </div>
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-            Studio-Grade <span className="text-gradient-cyan">AI Film Production</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            AI Film & <span className="font-cursive text-cyan-400 text-4xl sm:text-5xl lg:text-6xl font-normal">VFX Production</span> Studio
           </h2>
-          <p className={`text-base sm:text-lg ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
-            Combining classical cinematic craftsmanship with cutting-edge generative AI models to produce broadcast-ready movies, trailers, and series at cinematic scale.
+          <p className="text-base sm:text-lg text-slate-300 font-normal">
+            Harness the power of AI generative video tools to produce Hollywood-quality movies, war sequences, and VFX clips at unprecedented speed.
           </p>
         </div>
 
-        {/* 2x2 Big Service Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Services Grid (Studio.Design Theme) */}
+        <div className="grid md:grid-cols-2 gap-6">
           {aiFilmServices.map((service, index) => (
             <div
               key={index}
-              className="glass-card rounded-2xl p-8 border border-slate-800/90 transition-all duration-300 hover:border-cyan-500/40 hover:-translate-y-1.5 group reveal-init"
+              className="studio-card p-8 flex flex-col justify-between reveal-scale-up group"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform ${
-                  theme === 'light' ? 'bg-slate-100 border border-slate-200' : 'bg-slate-900 border border-slate-800'
-                }`}>
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-[#141624] border border-[#22263d] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
                   {service.icon}
                 </div>
-                <span className="text-xs font-mono text-cyan-500 px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/30">
-                  PIPELINE 4.0
-                </span>
+                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm leading-relaxed mb-6 text-slate-300">
+                  {service.description}
+                </p>
               </div>
 
-              <h3 className={`text-2xl font-bold mb-3 group-hover:text-cyan-500 transition-colors ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-                {service.title}
-              </h3>
-              <p className={`text-sm leading-relaxed mb-6 ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
-                {service.description}
-              </p>
-
-              <div className={`grid grid-cols-2 gap-2 border-t pt-5 ${theme === 'light' ? 'border-slate-200' : 'border-slate-800/80'}`}>
-                {service.highlights.map((item, idx) => (
-                  <div key={idx} className={`flex items-center gap-2 text-xs font-medium ${theme === 'light' ? 'text-slate-700' : 'text-slate-300'}`}>
-                    <CheckCircle className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+              <div>
+                <div className="grid grid-cols-2 gap-2.5 border-t border-[#1a1d2e] pt-5">
+                  {service.features.map((feat, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <span className="truncate">{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* AI Tech Stack Marquee */}
-        {/* <div className="mt-16 text-center space-y-4 reveal-init">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">
-            Powered By Studio-Grade Generative AI Tech Stack
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-slate-400">
-            {['Runway Gen-3 Alpha', 'Midjourney v6', 'Kling AI Studio', 'ElevenLabs Voice Engine', 'OpenAI Sora Integration', 'ComfyUI Bespoke Workflows', 'Unreal Engine 5.4'].map((tech, i) => (
-              <span key={i} className={`px-4 py-2 rounded-xl border transition-colors ${
-                theme === 'light' ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-slate-900/90 border-slate-800 text-slate-300'
-              }`}>
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div> */}
+        {/* CTA */}
+        <div className="mt-16 text-center reveal-fade-up">
+          <button
+            onClick={onOpenContact}
+            className="px-8 py-4 rounded-2xl font-bold text-slate-950 bg-gradient-to-r from-cyan-400 via-sky-400 to-cyan-500 hover:brightness-110 shadow-xl shadow-cyan-500/25 transition-all text-sm inline-flex items-center gap-2 cursor-pointer transform hover:-translate-y-0.5"
+          >
+            <span>Commission an AI Film Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
 
       </div>
     </section>

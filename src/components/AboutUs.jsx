@@ -1,119 +1,102 @@
 import React from 'react';
-import { Film, Award, Globe, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { Award, ShieldCheck, Zap, Users, Globe2, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export default function AboutUs({ theme, onOpenContact }) {
+export default function AboutUs({ onOpenContact }) {
+  const stats = [
+    { label: 'Short Drama Series Supplied', val: '500+' },
+    { label: 'AI Video Shots Rendered', val: '10,000+' },
+    { label: 'Global Dubbing Languages', val: '25+' },
+    { label: 'Video Stream Uptime Standard', val: '99.9%' },
+  ];
+
+  const pillars = [
+    {
+      title: 'High-Volume Content Production',
+      desc: 'Episodic vertical short drama series, screenplay writing, and ready-to-stream video packages.'
+    },
+    {
+      title: 'Studio AI Film Pipelines',
+      desc: 'Custom neural LoRA model training, actor facial consistency, and high-octane 4K AI visual effects rendering.'
+    },
+    {
+      title: 'End-to-End Content Supply',
+      desc: 'Full screenplay creation, episodic script breaking, automated AI voice dubbing, and ready-to-stream video content.'
+    },
+    {
+      title: 'Enterprise Security & DRM',
+      desc: 'AES-128 DRM stream encryption, screen recording protection, and dynamic user watermarking to protect original IP.'
+    }
+  ];
+
   return (
-    <section id="about-us" className={`py-24 relative border-t ${theme === 'light' ? 'bg-slate-100 border-slate-200' : 'bg-slate-950/90 border-slate-800'}`}>
+    <section id="about-us" className="py-24 relative border-t border-[#181a28] bg-[#050508]">
       
-      {/* Background glow orb */}
-      <div className="absolute top-1/2 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-[160px] pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-init">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" /> Studio Heritage
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 reveal-fade-up">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121422] border border-[#22263d] text-amber-400 text-xs font-semibold uppercase tracking-wider">
+            <Award className="w-4 h-4" /> About Gupta Studio
           </div>
-          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-            About <span className="text-gradient-gold">Gupta Studio Entertainment</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            Pioneering <span className="font-cursive text-amber-400 text-4xl sm:text-5xl lg:text-6xl font-normal">Next-Gen Media Tech</span> & AI Film
           </h2>
-          <p className={`text-base sm:text-lg ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
-            We are a global entertainment technology & production agency bridging traditional cinematic storytelling with cutting-edge AI pipelines and short-form video streaming ecosystems.
+          <p className="text-base sm:text-lg text-slate-300 font-normal">
+            Gupta Studio is a global technology and media production studio supplying short drama series, film scripts, and AI video clips worldwide.
           </p>
         </div>
 
-        {/* Content Grid */}
+        {/* Story & Pillars Grid */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Studio Narrative */}
-          <div className="lg:col-span-6 space-y-6 reveal-init">
-            <div className="space-y-3">
-              <span className="text-xs font-bold text-cyan-500 uppercase tracking-widest">Pioneering Next-Gen Media</span>
-              <h3 className={`text-2xl sm:text-3xl font-extrabold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
-                Empowering Creators & Studios with AI & Short Drama Technology
+          <div className="lg:col-span-6 space-y-6 reveal-slide-left">
+            <div className="studio-card p-8 shadow-2xl">
+              <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5 mb-2">
+                <Globe2 className="w-4 h-4 text-cyan-400" /> Global Footprint • India, Hong Kong, USA
+              </span>
+              <h3 className="text-2xl font-extrabold mb-4 text-white">
+                Empowering Global Short Drama & AI Content Creation
               </h3>
-              <p className={`text-sm leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-300'}`}>
-                Founded with a vision to revolutionize digital entertainment, Gupta Studio Entertainment specializes in building turnkey vertical short drama platforms (similar to ReelShort and DramaBox) alongside studio-grade AI movie production workflows.
+              <p className="text-sm leading-relaxed mb-4 text-slate-300">
+                With the explosive global demand for vertical short drama series, Gupta Studio provides the complete production pipeline and AI generative video workflows required to create high-retention video content.
               </p>
-              <p className={`text-xs sm:text-sm leading-relaxed ${theme === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>
-                From script development to AI character training, automated multilingual dubbing in 25+ languages, and mobile app release with integrated coin monetization, we manage the full creative and technical lifecycle.
+              <p className="text-sm leading-relaxed text-slate-300">
+                Our hybrid studio combines experienced screenwriters and video directors with cutting-edge AI generative video tools, enabling 10x faster turnaround at a fraction of traditional Hollywood budgets.
               </p>
             </div>
 
-            {/* Core Values / Pillar List */}
-            <div className="grid sm:grid-cols-2 gap-4 pt-2">
-              <div className={`p-4 rounded-xl border space-y-1.5 ${theme === 'light' ? 'bg-white border-slate-200 shadow-sm' : 'bg-slate-900/80 border-slate-800'}`}>
-                <div className="flex items-center gap-2 text-amber-500 font-bold text-sm">
-                  <Zap className="w-4 h-4" /> Rapid Turnaround
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((s, i) => (
+                <div key={i} className="studio-card p-5">
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400 font-mono">{s.val}</div>
+                  <div className="text-xs font-bold mt-1 text-slate-300">{s.label}</div>
                 </div>
-                <p className={`text-xs ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>Launch full short drama apps in under 3 weeks & AI trailers in days.</p>
-              </div>
-
-              <div className={`p-4 rounded-xl border space-y-1.5 ${theme === 'light' ? 'bg-white border-slate-200 shadow-sm' : 'bg-slate-900/80 border-slate-800'}`}>
-                <div className="flex items-center gap-2 text-cyan-500 font-bold text-sm">
-                  <ShieldCheck className="w-4 h-4" /> Bank-Grade Security
-                </div>
-                <p className={`text-xs ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>AES-128 DRM encryption and digital watermark protection for your original IP.</p>
-              </div>
-            </div>
-
-            <div className="pt-4">
-              <button
-                onClick={onOpenContact}
-                className="px-7 py-3.5 rounded-xl font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-lg shadow-amber-500/20 text-sm cursor-pointer"
-              >
-                Partner With Our Studio
-              </button>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: Visual Card Grid */}
-          <div className="lg:col-span-6 reveal-init">
-            <div className="grid sm:grid-cols-2 gap-6">
-              
-              <div className="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-500 flex items-center justify-center">
-                  <Film className="w-6 h-6" />
+          {/* Right Column: Core Pillars */}
+          <div className="lg:col-span-6 space-y-4 reveal-slide-right">
+            {pillars.map((p, idx) => (
+              <div key={idx} className="studio-card p-6 flex items-start gap-4 hover:border-cyan-500/50">
+                <div className="p-2.5 rounded-xl bg-[#141624] border border-[#22263d] text-amber-400 shrink-0">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <h4 className={`text-lg font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>Short Drama Apps</h4>
-                <p className={`text-xs leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
-                  Turnkey iOS, Android, and web streaming apps engineered for viral micro-drama series.
-                </p>
-              </div>
-
-              <div className="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-500 flex items-center justify-center">
-                  <Sparkles className="w-6 h-6" />
+                <div>
+                  <h4 className="text-lg font-bold mb-1 text-white">
+                    {p.title}
+                  </h4>
+                  <p className="text-xs leading-relaxed text-slate-300">
+                    {p.desc}
+                  </p>
                 </div>
-                <h4 className={`text-lg font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>AI Film Studio</h4>
-                <p className={`text-xs leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
-                  Script-to-screen 4K generative AI production, character consistency, and broadcast VFX.
-                </p>
               </div>
-
-              <div className="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-500 flex items-center justify-center">
-                  <Globe className="w-6 h-6" />
-                </div>
-                <h4 className={`text-lg font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>Global Reach</h4>
-                <p className={`text-xs leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
-                  Neural AI voice dubbing and auto subtitles in 25+ international languages.
-                </p>
-              </div>
-
-              <div className="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 flex items-center justify-center">
-                  <Award className="w-6 h-6" />
-                </div>
-                <h4 className={`text-lg font-bold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>Proven Results</h4>
-                <p className={`text-xs leading-relaxed ${theme === 'light' ? 'text-slate-600' : 'text-slate-400'}`}>
-                  Supporting millions of app downloads and over 10,000+ AI shots produced worldwide.
-                </p>
-              </div>
-
-            </div>
+            ))}
           </div>
 
         </div>
