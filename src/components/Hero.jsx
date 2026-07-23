@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { ChevronRight, Video, Globe, Clapperboard, Sparkles } from 'lucide-react';
-
+import herovideo from "../assets/herovid.mp4"
 function useCountUp(end, isVisible, duration = 1500) {
   const [value, setValue] = useState(0);
   const rafRef = useRef(null);
@@ -109,7 +109,7 @@ export default function Hero({ onOpenContact }) {
             mounted ? 'scale-105 opacity-85' : 'scale-110 opacity-0'
           }`}
         >
-          <source src="/src/assets/herovid.mp4" type="video/mp4" />
+          <source src={herovideo} />
           {/* <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" /> */}
         </video>
 
