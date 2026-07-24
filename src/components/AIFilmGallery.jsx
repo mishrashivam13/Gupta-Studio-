@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Sparkles, Volume2, VolumeX, Heart, MessageCircle, Share2, Coins, Lock, Wand2, Clapperboard, ChevronRight } from 'lucide-react';
-
+import dramavideo from "../assets/draam.mp4"
+import aivideo from "../assets/ai.mp4"
 export default function AIFilmGallery({ onOpenContact }) {
   const [dramaEpisode, setDramaEpisode] = useState(1);
   const [dramaCoins, setDramaCoins] = useState(50);
@@ -102,7 +103,7 @@ export default function AIFilmGallery({ onOpenContact }) {
                     !dramaUnlocked.includes(dramaEpisode) ? 'filter blur-md brightness-40' : ''
                   }`}
                 >
-                  <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+                  <source src={dramavideo} type="video/mp4" />
                 </video>
 
                 {/* Mute Button */}
@@ -254,7 +255,7 @@ export default function AIFilmGallery({ onOpenContact }) {
                   poster="/assets/war_at_sea.jpg"
                   className="w-full h-full object-cover"
                 >
-                  <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+                  <source src={aivideo} type="video/mp4" />
                 </video>
 
                 {/* Mute Button */}
@@ -267,7 +268,7 @@ export default function AIFilmGallery({ onOpenContact }) {
 
                 {/* Top Badge Overlay */}
                 <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/85 border border-slate-800 text-[9px] sm:text-[10px] font-extrabold text-blue-400 z-20">
-                  War at Sea: Naval Supremacy
+                  Hand of Cthulhu Attacks City
                 </div>
 
                 {/* Bottom AI Metadata */}
@@ -276,21 +277,21 @@ export default function AIFilmGallery({ onOpenContact }) {
                     <span className="px-1 py-0.5 rounded bg-blue-600 text-white text-[9px] sm:text-[10px] font-extrabold">
                       Generative AI Movie
                     </span>
-                    <span className="text-[9px] sm:text-[10px] font-mono text-slate-300">
+                    {/* <span className="text-[9px] sm:text-[10px] font-mono text-slate-300">
                       Runway Gen-3
-                    </span>
+                    </span> */}
                   </div>
                   <h4 className="text-[11px] sm:text-xs font-bold text-white line-clamp-1">
-                    War at Sea (Naval Battle Scene)
+                   Attack at city Scene
                   </h4>
                   <p className="text-[9px] sm:text-[10px] text-slate-300 italic line-clamp-2 leading-relaxed">
-                    "Epic cinematic naval battle at sea with stormy ocean waves, cannon fire & smoke."
+                    "Epic cinematic Hand of Cthulhu Attacks City"
                   </p>
                 </div>
               </div>
 
               {/* AI Tool Stack Bar inside Stream 2 */}
-              <div className="p-2.5 sm:p-3 bg-slate-950 border-t border-slate-800 z-20 space-y-1">
+              {/* <div className="p-2.5 sm:p-3 bg-slate-950 border-t border-slate-800 z-20 space-y-1">
                 <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-bold text-slate-400">
                   <span>AI Production Pipeline</span>
                   <span className="text-blue-400">100% AI Generated</span>
@@ -300,7 +301,7 @@ export default function AIFilmGallery({ onOpenContact }) {
                   <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-cyan-400">Midjourney v6</span>
                   <span className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-400">ElevenLabs</span>
                 </div>
-              </div>
+              </div> */}
 
             </div>
           </div>
