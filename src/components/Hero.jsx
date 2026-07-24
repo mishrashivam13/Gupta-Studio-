@@ -148,12 +148,12 @@ export default function Hero({ onOpenContact }) {
               e.target.play();
             }}
             className={`w-full h-full object-cover transition-all duration-[1400ms] ease-out ${
-              mounted ? 'scale-105 opacity-45' : 'scale-110 opacity-0'
-            }`}
+  mounted ? 'scale-105 opacity-70' : 'scale-110 opacity-0'
+}`}
           >
             <source src={herovideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0E]/90 via-[#0B0B0E]/70 to-[#0B0B0E]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0E]/80 via-[#0B0B0E]/60 to-[#0B0B0E]/90" />
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 text-center gse-body">
