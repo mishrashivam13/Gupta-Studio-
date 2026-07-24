@@ -153,7 +153,7 @@ export default function Hero({ onOpenContact }) {
           >
             <source src={herovideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0E]/80 via-[#0B0B0E]/60 to-[#0B0B0E]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0E]/75 via-[#0B0B0E]/55 to-[#0B0B0E]/85" />
         </div>
 
         <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 text-center gse-body">
