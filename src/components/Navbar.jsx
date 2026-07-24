@@ -105,7 +105,7 @@ export default function Navbar({ onOpenContact }) {
               setMobileMenuOpen(false);
               onOpenContact();
             }}
-            className="w-full py-3 rounded-md font-semibold text-[#0B0B0E] bg-[#C9A227] flex items-center justify-center gap-2 text-sm"
+            className="w-full py-3 rounded-md font-semibold text-[#fff] bg-[#053bcd] flex items-center justify-center gap-2 text-sm"
           >
             <span>Get Custom Content</span>
             <ArrowRight className="w-4 h-4" />
